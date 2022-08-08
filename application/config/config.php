@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = '';
-$config['base_url'] = 'https://a744-200-87-90-178.sa.ngrok.io/sisemao';
+$config['base_url'] = '';
+//$config['base_url'] = 'https://a744-200-87-90-178.sa.ngrok.io/sisemao';
 
 /*
 |--------------------------------------------------------------------------

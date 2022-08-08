@@ -151,6 +151,15 @@
 																<div>
 																	<button onclick="imprimirPlanillaEmpleado(<?= $planilla->id_planilla ?>)"> <i class="la la-arrow-circle-o-up"></i>Papeleta de Pago de <?= $planilla->id_planilla ?></button>
 																</div>
+																<div class="mr-xl-2 mr-1">
+																	<button onclick="modalEditarDatosPersonales(<?= $planilla->id_planilla ?>)"><i class="la la-arrow-circle-o-down"></i> Datos Personales</button>
+																</div>
+																<div class="mr-xl-2 mr-1">
+																	<button onclick="modalEditarDatosPago(<?= $planilla->id_planilla ?>)"><i class="la la-arrow-circle-o-down"></i> Datos Pago</button>
+																</div>
+																<div class="mr-xl-2 mr-1">
+																	<button onclick="modalEditarDatosDescuento(<?= $planilla->id_planilla ?>)"><i class="la la-arrow-circle-o-down"></i> Datos Descuento</button>
+																</div>
 															</div>
 														</td>
 													</tr>
@@ -535,6 +544,423 @@
 			</div>
 		</div>
 	</div>
+	<!-- END: Modal -->
+
+	<!-- Modal Datos personales -->
+	<div class="modal fade text-left" id="planilla-modal-datos-personal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="myModalLabel35">Planilla</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-planilla-datos-personal">
+					<div class="modal-body">
+						<fieldset class="form-group floating-label-form-group">
+							<label for="tipo_documento">tipo_documento</label>
+							<input type="text" class="form-control" id="tipo_documento" name="tipo_documento" placeholder="tipo_documento">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="dip">dip</label>
+							<input type="text" class="form-control" id="dip" name="dip" placeholder="dip">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="exp">exp</label>
+							<input type="text" class="form-control" id="exp" name="exp" placeholder="exp">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="fecha_nacimiento">fecha_nacimiento</label>
+							<input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="fecha_nacimiento">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="edad">edad</label>
+							<input type="text" class="form-control" id="edad" name="edad" placeholder="edad">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="turno">turno</label>
+							<input type="text" class="form-control" id="turno" name="turno" placeholder="turno">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="paterno">paterno</label>
+							<input type="text" class="form-control" id="paterno" name="paterno" placeholder="paterno">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="materno">materno</label>
+							<input type="text" class="form-control" id="materno" name="materno" placeholder="materno">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="nombres">nombres</label>
+							<input type="text" class="form-control" id="nombres" name="nombres" placeholder="nombres">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="pais">pais</label>
+							<input type="text" class="form-control" id="pais" name="pais" placeholder="pais">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="sexo">sexo</label>
+							<input type="text" class="form-control" id="sexo" name="sexo" placeholder="sexo">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="jubilado">jubilado</label>
+							<input type="text" class="form-control" id="jubilado" name="jubilado" placeholder="jubilado">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="aporte_afp">aporte_afp</label>
+							<input type="text" class="form-control" id="aporte_afp" name="aporte_afp" placeholder="aporte_afp">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="discapacidad">discapacidad</label>
+							<input type="text" class="form-control" id="discapacidad" name="discapacidad" placeholder="discapacidad">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="tutor">tutor</label>
+							<input type="text" class="form-control" id="tutor" name="tutor" placeholder="tutor">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="fecha_ingreso">fecha_ingreso</label>
+							<input type="text" class="form-control" id="fecha_ingreso" name="fecha_ingreso" placeholder="fecha_ingreso">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="fecha_retiro">fecha_retiro</label>
+							<input type="text" class="form-control" id="fecha_retiro" name="fecha_retiro" placeholder="fecha_retiro">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="motivo_retiro">motivo_retiro</label>
+							<input type="text" class="form-control" id="motivo_retiro" name="motivo_retiro" placeholder="motivo_retiro">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="caja_salud">caja_salud</label>
+							<input type="text" class="form-control" id="caja_salud" name="caja_salud" placeholder="caja_salud">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="afp_aporta">afp_aporta</label>
+							<input type="text" class="form-control" id="afp_aporta" name="afp_aporta" placeholder="afp_aporta">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="nua_cua">nua_cua</label>
+							<input type="text" class="form-control" id="nua_cua" name="nua_cua" placeholder="nua_cua">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="sucursal">sucursal</label>
+							<input type="text" class="form-control" id="sucursal" name="sucursal" placeholder="sucursal">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="clasificacion">clasificacion</label>
+							<input type="text" class="form-control" id="clasificacion" name="clasificacion" placeholder="clasificacion">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="cargo">cargo</label>
+							<input type="text" class="form-control" id="cargo" name="cargo" placeholder="cargo">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="modalidad_contrato">modalidad_contrato</label>
+							<input type="text" class="form-control" id="modalidad_contrato" name="modalidad_contrato" placeholder="modalidad_contrato">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="tipo_contrato">tipo_contrato</label>
+							<input type="text" class="form-control" id="tipo_contrato" name="tipo_contrato" placeholder="tipo_contrato">
+						</fieldset>
+					</div>
+					<div class="modal-footer">
+						<input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+						<!-- <input type="submit" class="btn btn-outline-primary btn-lg" value="Login"> -->
+						<button id="guardar-btn-editar2" type="button" class="btn btn-primary">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- END: Modal -->
+
+	<!-- Modal -->
+	<div class="modal fade text-left" id="planilla-modal-datos-pago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="myModalLabel35">Planilla</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-planilla-datos-pago">
+					<div class="modal-body">
+						<fieldset class="form-group floating-label-form-group">
+							<label for="dias_pagados">dias_pagados</label>
+							<input type="text" class="form-control" id="dias_pagados" name="dias_pagados" placeholder="dias_pagados">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="horas_pagadas">horas_pagadas</label>
+							<input type="text" class="form-control" id="horas_pagadas" name="horas_pagadas" placeholder="horas_pagadas">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="haber_basico">haber_basico</label>
+							<input type="text" class="form-control" id="haber_basico" name="haber_basico" placeholder="haber_basico">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="dias">dias</label>
+							<input type="text" class="form-control" id="dias" name="dias" placeholder="dias">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_dias_trabajados">total_dias_trabajados</label>
+							<input type="text" class="form-control" id="total_dias_trabajados" name="total_dias_trabajados" placeholder="total_dias_trabajados">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="anios_antiguedad">anios_antiguedad</label>
+							<input type="text" class="form-control" id="anios_antiguedad" name="anios_antiguedad" placeholder="anios_antiguedad">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="porcentaje_bono_antiguedad">porcentaje_bono_antiguedad</label>
+							<input type="text" class="form-control" id="porcentaje_bono_antiguedad" name="porcentaje_bono_antiguedad" placeholder="porcentaje_bono_antiguedad">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="bono_antiguedad">bono_antiguedad</label>
+							<input type="text" class="form-control" id="bono_antiguedad" name="bono_antiguedad" placeholder="bono_antiguedad">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="horas_extra">horas_extra</label>
+							<input type="text" class="form-control" id="horas_extra" name="horas_extra" placeholder="horas_extra">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_horas_extra">monto_horas_extra</label>
+							<input type="text" class="form-control" id="monto_horas_extra" name="monto_horas_extra" placeholder="monto_horas_extra">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="horas_recargo_nocturno">horas_recargo_nocturno</label>
+							<input type="text" class="form-control" id="horas_recargo_nocturno" name="horas_recargo_nocturno" placeholder="horas_recargo_nocturno">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_horas_recargo_nocturno">monto_horas_recargo_nocturno</label>
+							<input type="text" class="form-control" id="monto_horas_recargo_nocturno" name="monto_horas_recargo_nocturno" placeholder="monto_horas_recargo_nocturno">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="feriados">feriados</label>
+							<input type="text" class="form-control" id="feriados" name="feriados" placeholder="feriados">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_feriados">monto_feriados</label>
+							<input type="text" class="form-control" id="monto_feriados" name="monto_feriados" placeholder="monto_feriados">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="pagos_2">pagos_2</label>
+							<input type="text" class="form-control" id="pagos_2" name="pagos_2" placeholder="pagos_2">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="domintos_trabajados">domintos_trabajados</label>
+							<input type="text" class="form-control" id="domintos_trabajados" name="domintos_trabajados" placeholder="domintos_trabajados">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_domintos_trabajados">monto_domintos_trabajados</label>
+							<input type="text" class="form-control" id="monto_domintos_trabajados" name="monto_domintos_trabajados" placeholder="monto_domintos_trabajados">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="toneladas">toneladas</label>
+							<input type="text" class="form-control" id="toneladas" name="toneladas" placeholder="toneladas">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_toneladas">monto_toneladas</label>
+							<input type="text" class="form-control" id="monto_toneladas" name="monto_toneladas" placeholder="monto_toneladas">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_tonelaje">total_tonelaje</label>
+							<input type="text" class="form-control" id="total_tonelaje" name="total_tonelaje" placeholder="total_tonelaje">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="p_av">p_av</label>
+							<input type="text" class="form-control" id="p_av" name="p_av" placeholder="p_av">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="p_aw">p_aw</label>
+							<input type="text" class="form-control" id="p_aw" name="p_aw" placeholder="p_aw">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="p_ax">p_ax</label>
+							<input type="text" class="form-control" id="p_ax" name="p_ax" placeholder="p_ax">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="bono_produccion">bono_produccion</label>
+							<input type="text" class="form-control" id="bono_produccion" name="bono_produccion" placeholder="bono_produccion">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_tonelaje_tripulacion">total_tonelaje_tripulacion</label>
+							<input type="text" class="form-control" id="total_tonelaje_tripulacion" name="total_tonelaje_tripulacion" placeholder="total_tonelaje_tripulacion">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="p_ba">p_ba</label>
+							<input type="text" class="form-control" id="p_ba" name="p_ba" placeholder="p_ba">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="p_bb">p_bb</label>
+							<input type="text" class="form-control" id="p_bb" name="p_bb" placeholder="p_bb">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="p_bc">p_bc</label>
+							<input type="text" class="form-control" id="p_bc" name="p_bc" placeholder="p_bc">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_tonelaje2">total_tonelaje2</label>
+							<input type="text" class="form-control" id="total_tonelaje2" name="total_tonelaje2" placeholder="total_tonelaje2">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_tonelaje3">total_tonelaje3</label>
+							<input type="text" class="form-control" id="total_tonelaje3" name="total_tonelaje3" placeholder="total_tonelaje3">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_a_cancelar_tonelaje">monto_a_cancelar_tonelaje</label>
+							<input type="text" class="form-control" id="monto_a_cancelar_tonelaje" name="monto_a_cancelar_tonelaje" placeholder="monto_a_cancelar_tonelaje">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_ganado">total_ganado</label>
+							<input type="text" class="form-control" id="total_ganado" name="total_ganado" placeholder="total_ganado">
+						</fieldset>
+					</div>
+					<div class="modal-footer">
+						<input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+						<!-- <input type="submit" class="btn btn-outline-primary btn-lg" value="Login"> -->
+						<button id="guardar-btn-editar3" type="button" class="btn btn-primary">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- END: Modal -->
+
+	<!-- Modal -->
+	<div class="modal fade text-left" id="planilla-modal-datos-descuentos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="myModalLabel35">Planilla</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-planilla-datos-descuentos">
+					<div class="modal-body">
+						<fieldset class="form-group floating-label-form-group">
+							<label for="cot_mens_afp">cot_mens_afp</label>
+							<input type="text" class="form-control" id="cot_mens_afp" name="cot_mens_afp" placeholder="cot_mens_afp">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="r_comun_afp">r_comun_afp</label>
+							<input type="text" class="form-control" id="r_comun_afp" name="r_comun_afp" placeholder="r_comun_afp">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="comision_afp">comision_afp</label>
+							<input type="text" class="form-control" id="comision_afp" name="comision_afp" placeholder="comision_afp">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="apo_sol_afp">apo_sol_afp</label>
+							<input type="text" class="form-control" id="apo_sol_afp" name="apo_sol_afp" placeholder="apo_sol_afp">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="aporte_afp2">aporte_afp2</label>
+							<input type="text" class="form-control" id="aporte_afp2" name="aporte_afp2" placeholder="aporte_afp2">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="aporte_sindicato">aporte_sindicato</label>
+							<input type="text" class="form-control" id="aporte_sindicato" name="aporte_sindicato" placeholder="aporte_sindicato">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="marcacion_fuera_de_horario">marcacion_fuera_de_horario</label>
+							<input type="text" class="form-control" id="marcacion_fuera_de_horario" name="marcacion_fuera_de_horario" placeholder="marcacion_fuera_de_horario">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_fuera_de_horario">monto_fuera_de_horario</label>
+							<input type="text" class="form-control" id="monto_fuera_de_horario" name="monto_fuera_de_horario" placeholder="monto_fuera_de_horario">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="faltas">faltas</label>
+							<input type="text" class="form-control" id="faltas" name="faltas" placeholder="faltas">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_faltas">monto_faltas</label>
+							<input type="text" class="form-control" id="monto_faltas" name="monto_faltas" placeholder="monto_faltas">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="abandones">abandones</label>
+							<input type="text" class="form-control" id="abandones" name="abandones" placeholder="abandones">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="monto_abandonos">monto_abandonos</label>
+							<input type="text" class="form-control" id="monto_abandonos" name="monto_abandonos" placeholder="monto_abandonos">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="retrasos">retrasos</label>
+							<input type="text" class="form-control" id="retrasos" name="retrasos" placeholder="retrasos">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_retrasos">total_retrasos</label>
+							<input type="text" class="form-control" id="total_retrasos" name="total_retrasos" placeholder="total_retrasos">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="multas_sindicato">multas_sindicato</label>
+							<input type="text" class="form-control" id="multas_sindicato" name="multas_sindicato" placeholder="multas_sindicato">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="apoyo_trabajador">apoyo_trabajador</label>
+							<input type="text" class="form-control" id="apoyo_trabajador" name="apoyo_trabajador" placeholder="apoyo_trabajador">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="retencion_judicial">retencion_judicial</label>
+							<input type="text" class="form-control" id="retencion_judicial" name="retencion_judicial" placeholder="retencion_judicial">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="otros_descuentos">otros_descuentos</label>
+							<input type="text" class="form-control" id="otros_descuentos" name="otros_descuentos" placeholder="otros_descuentos">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="rc_iva">rc_iva</label>
+							<input type="text" class="form-control" id="rc_iva" name="rc_iva" placeholder="rc_iva">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="finiquito">finiquito</label>
+							<input type="text" class="form-control" id="finiquito" name="finiquito" placeholder="finiquito">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_descuentos">total_descuentos</label>
+							<input type="text" class="form-control" id="total_descuentos" name="total_descuentos" placeholder="total_descuentos">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="total_cancelar">total_cancelar</label>
+							<input type="text" class="form-control" id="total_cancelar" name="total_cancelar" placeholder="total_cancelar">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="centros_de_costo">centros_de_costo</label>
+							<input type="text" class="form-control" id="centros_de_costo" name="centros_de_costo" placeholder="centros_de_costo">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="cuenta">cuenta</label>
+							<input type="text" class="form-control" id="cuenta" name="cuenta" placeholder="cuenta">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="centros_de_costo_2">centros_de_costo_2</label>
+							<input type="text" class="form-control" id="centros_de_costo_2" name="centros_de_costo_2" placeholder="centros_de_costo_2">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="nombre_planilla_asistencia">nombre_planilla_asistencia</label>
+							<input type="text" class="form-control" id="nombre_planilla_asistencia" name="nombre_planilla_asistencia" placeholder="nombre_planilla_asistencia">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="planilla_mes_num">planilla_mes_num</label>
+							<input type="text" class="form-control" id="planilla_mes_num" name="planilla_mes_num" placeholder="planilla_mes_num">
+						</fieldset>
+						<fieldset class="form-group floating-label-form-group">
+							<label for="planilla_anio">planilla_anio</label>
+							<input type="text" class="form-control" id="planilla_anio" name="planilla_anio" placeholder="planilla_anio">
+						</fieldset>
+					</div>
+					<div class="modal-footer">
+						<input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+						<!-- <input type="submit" class="btn btn-outline-primary btn-lg" value="Login"> -->
+						<button id="guardar-btn-editar4" type="button" class="btn btn-primary">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- END: Modal -->
 
 	<div class="sidenav-overlay"></div>
 	<div class="drag-target"></div>
@@ -784,6 +1210,92 @@
 					$el.val(val);
 			}
 		});
+	}
+	function modalEditarDatosPersonales(id) {
+		$('#form-planilla-datos-personal').resetear();
+		datos = buscar(id)[0];
+
+		populate_form(datos);
+
+		$('#planilla-modal-datos-personal').modal('show');
+		$("#guardar-btn-editar2").unbind("click");
+		$("#guardar-btn-editar2").bind("click", function() {
+			guardar_editar2(id);
+		});
+	}
+	function guardar_editar2(id) {
+		if (!$('#form-planilla-datos-personal').find('.has-error').length) {
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url('planilla/planilla/editar/'); ?>' + id,
+				data: $('#form-planilla-datos-personal').serialize(),
+				success: function(response) {
+					$('#planilla-modal-datos-personal').modal('hide');
+					location.reload();
+				},
+				error: function() {
+					alert('Formulario con errores al editar');
+				}
+			});
+		}
+	}
+
+	function modalEditarDatosPago(id) {
+		$('#form-planilla-datos-pago').resetear();
+		datos = buscar(id)[0];
+
+		populate_form(datos);
+
+		$('#planilla-modal-datos-pago').modal('show');
+		$("#guardar-btn-editar3").unbind("click");
+		$("#guardar-btn-editar3").bind("click", function() {
+			guardar_editar3(id);
+		});
+	}
+	function guardar_editar3(id) {
+		if (!$('#form-planilla-datos-pago').find('.has-error').length) {
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url('planilla/planilla/editar/'); ?>' + id,
+				data: $('#form-planilla-datos-pago').serialize(),
+				success: function(response) {
+					$('#planilla-modal-datos-pago').modal('hide');
+					location.reload();
+				},
+				error: function() {
+					alert('Formulario con errores al editar');
+				}
+			});
+		}
+	}
+
+	function modalEditarDatosDescuento(id) {
+		$('#form-planilla-datos-descuentos').resetear();
+		datos = buscar(id)[0];
+
+		populate_form(datos);
+
+		$('#planilla-modal-datos-descuentos').modal('show');
+		$("#guardar-btn-editar4").unbind("click");
+		$("#guardar-btn-editar4").bind("click", function() {
+			guardar_editar4(id);
+		});
+	}
+	function guardar_editar4(id) {
+		if (!$('#form-planilla-datos-descuentos').find('.has-error').length) {
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url('planilla/planilla/editar/'); ?>' + id,
+				data: $('#form-planilla-datos-descuentos').serialize(),
+				success: function(response) {
+					$('#planilla-modal-datos-descuentos').modal('hide');
+					location.reload();
+				},
+				error: function() {
+					alert('Formulario con errores al editar');
+				}
+			});
+		}
 	}
 </script>
 <?php
