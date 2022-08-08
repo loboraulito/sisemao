@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 class Rol_model extends CI_Model
@@ -50,3 +49,4 @@ class Rol_model extends CI_Model
 		$this->db->update('public.rol', $data);
 	}
 }
+?>
