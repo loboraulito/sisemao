@@ -114,16 +114,5 @@
 	<!-- END: Page JS-->
 
 </body>
-<!-- END: Body-->
-<script>
-	$(document).ready(function() {
-		'use strict';
-
-	});
-
-	function verificar() {
-		console.log("verificando ");
-	}
-</script>
 
 </html>
