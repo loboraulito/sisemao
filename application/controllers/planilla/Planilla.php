@@ -22,6 +22,14 @@ class Planilla extends CI_Controller
 		$this->planilla_model->insert($data);
 	}
 
+	public function actualizarVariables($id_planilla)
+	{
+		$planilla = $this->planilla_model->get($id_planilla);
+		$planilla->total_tonelaje3 = ($planilla->total_tonelaje_tripulacion + $planilla->p_bb + $planilla->total_tonelaje + $planilla->p_aw);
+		$planilla->total_dias_trabajados = ($planilla->haber_basico/30 * $planilla->dias_pagados);
+		$planilla->bono_antiguedad = 
+	}
+
 	public function editar($id)
 	{
 		$data = $this->input->post();
@@ -501,4 +509,6 @@ class Planilla extends CI_Controller
 		ob_end_clean();
 		$pdf->Output('pdfexample.pdf', 'I');
 	}
+
+
 }
