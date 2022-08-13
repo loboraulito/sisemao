@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Planilla extends CI_Controller
 {
 	public function __construct()
@@ -25,9 +24,51 @@ class Planilla extends CI_Controller
 	public function actualizarVariables($id_planilla)
 	{
 		$planilla = $this->planilla_model->get($id_planilla);
-		$planilla->total_tonelaje3 = ($planilla->total_tonelaje_tripulacion + $planilla->p_bb + $planilla->total_tonelaje + $planilla->p_aw);
-		$planilla->total_dias_trabajados = ($planilla->haber_basico/30 * $planilla->dias_pagados);
-		$planilla->bono_antiguedad = 
+
+		$planilla->total_tonelaje3 = ($planilla->total_tonelaje_tripulacion + $planilla->p_bb + $planilla->total_tonelaje + $planilla->p_aw); //BE
+		$planilla->total_dias_trabajados = ($planilla->haber_basico/30 * $planilla->dias_pagados); //AF
+		$planilla->bono_antiguedad = (2250 * $planilla->porcentaje_bono_antiguedad); //AI
+		$planilla->monto_horas_extra = ($planilla->haber_basico /30 /8) * $planilla->horas_extra *2; //AK
+
+			$planilla->dias = $planilla->haber_basico / 30; //AE
+		$planilla->monto_horas_recargo_nocturno = (($planilla->horas_recargo_nocturno * 8) * ($planilla->dias / 8)) + 0.4; //AM
+		$planilla->monto_feriados = (($planilla->feriados * 8) * ($planilla->haber_basico / 30 / 8)) * 2; //AO
+		$planilla->monto_domintos_trabajados = (($planilla->domintos_trabajados * 8) * ($planilla->haber_basico / 30 / 8)) * 2; //AR
+
+			$planilla->p_av = $planilla->total_tonelaje * 2.1; //AV
+			$planilla->p_ax = $planilla->p_aw * 2.2; //AX
+			$planilla->p_ba = $planilla->total_tonelaje_tripulacion * 2; //BA
+			$planilla->p_bc = $planilla->p_bb * 2.1; //BC
+		$planilla->monto_a_cancelar_tonelaje = ($planilla->p_av + $planilla->p_ax + $planilla->p_ba + $planilla->p_bc); //BF
+
+			$planilla->total_ganado =
+				(
+					$planilla->total_dias_trabajados
+					+ $planilla->bono_antiguedad
+					+ $planilla->monto_horas_extra
+					+ $planilla->monto_horas_recargo_nocturno
+					+ $planilla->monto_feriados
+					+ $planilla->pagos_2
+					+ $planilla->monto_domintos_trabajados
+					+ $planilla->monto_a_cancelar_tonelaje); //BG
+		$planilla->cot_mens_afp = ($planilla->total_ganado * 0.1 /*10%*/ ); //BH
+
+			$planilla->edad = date_diff(date_create($planilla->fecha_nacimiento), date_create('now'))->y; //F
+		//BI
+		if($planilla->edad >= 65){
+			$planilla->r_comun_afp = 0; //BI
+		}
+		else{
+			$planilla->r_comun_afp = ($planilla->total_ganado * 0.0171 /*1.71%*/ ); //BI
+		}
+		$planilla->comision_afp = $planilla->total_ganado * 0.005 /*0.5% */; //BJ
+		$planilla->apo_sol_afp = $planilla->total_ganado * 0.005 /*0.5% */; //BK
+		$planilla->aporte_sindicato = $planilla->haber_basico * 0.01 /*1% */; //BM
+		$planilla->monto_faltas = ($planilla->haber_basico /30 ) * $planilla->faltas; //BQ
+		$planilla->monto_abandonos = ($planilla->haber_basico /30 ) * $planilla->abandones; //BS
+		$planilla->total_retrasos = ( (int)($planilla->retrasos / 4) ) * ($planilla->total_dias_trabajados / 30) / 2; //BU
+		$planilla->monto_fuera_de_horario = ($planilla->haber_basico / 30) * $planilla->marcacion_fuera_de_horario / 2; //BO
+		$planilla->otros_descuentos = ($planilla->monto_abandonos * 2); //BO ?????
 	}
 
 	public function editar($id)
@@ -509,6 +550,4 @@ class Planilla extends CI_Controller
 		ob_end_clean();
 		$pdf->Output('pdfexample.pdf', 'I');
 	}
-
-
 }
