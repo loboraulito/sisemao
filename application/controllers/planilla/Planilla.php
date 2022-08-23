@@ -69,6 +69,7 @@ class Planilla extends CI_Controller
 		$planilla->total_retrasos = ( (int)($planilla->retrasos / 4) ) * ($planilla->total_dias_trabajados / 30) / 2; //BU
 		$planilla->monto_fuera_de_horario = ($planilla->haber_basico / 30) * $planilla->marcacion_fuera_de_horario / 2; //BO
 		$planilla->otros_descuentos = ($planilla->monto_abandonos * 2); //BO ?????
+		$this->planilla_model->update($planilla->id_planilla, $planilla);
 	}
 
 	public function editar($id)
@@ -79,6 +80,7 @@ class Planilla extends CI_Controller
 		foreach ($data as $clave => $valor)
     		if(!empty($data['fecha_retiro']) || $valor=='') $data[$clave] = null;
 		$this->planilla_model->update($id, $data);
+		$this->actualizarVariables($id);
 	}
 
 	public function borrar($id)

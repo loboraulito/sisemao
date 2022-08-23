@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Rol_model extends CI_Model
+class Empleado_model extends CI_Model
 {
 	public function __construct()
 	{
@@ -11,7 +11,7 @@ class Rol_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from rol
+			from empleado
 		;
 		";
 		$query = $this->db->query($sql);
@@ -22,8 +22,8 @@ class Rol_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from rol t
-			where t.id_rol = {$id}
+			from empleado t
+			where t.id_empleado = {$id}
 		;
 		";
 		$query = $this->db->query($sql);
@@ -33,20 +33,13 @@ class Rol_model extends CI_Model
 	function insert($data)
 	{
 		$this->db->set($data);
-		$this->db->insert('rol', $data);
+		$this->db->insert('empleado', $data);
 	}
 
 	function update($id, $data)
 	{
-		$this->db->where('id_rol', $id);
-		$this->db->update('rol', $data);
-	}
-
-	function delete($id)
-	{
-		$data = array('estado' => 'I');
-		$this->db->where('id_rol', $id);
-		$this->db->update('rol', $data);
+		$this->db->where('id_empleado', $id);
+		$this->db->update('empleado', $data);
 	}
 }
 ?>

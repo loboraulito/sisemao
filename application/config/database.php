@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '172.30.0.21',
-	'port' => '5433',
-	'username' => 'postgres',
-	'password' => 'postgres',
+	'hostname' => 'localhost',
+	'port' => '3306',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'sisemao',
-	'dbdriver' => 'postgre',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

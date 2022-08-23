@@ -11,7 +11,7 @@ class Planilla_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from public.planilla
+			from planilla
 		;
 		";
 		$query = $this->db->query($sql);
@@ -22,7 +22,7 @@ class Planilla_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from public.planilla t
+			from planilla t
 			where t.id_planilla = {$id}
 		;
 		";
@@ -33,19 +33,19 @@ class Planilla_model extends CI_Model
 	function insert($data)
 	{
 		$this->db->set($data);
-		$this->db->insert('public.planilla', $data);
+		$this->db->insert('planilla', $data);
 	}
 
 	function update($id, $data)
 	{
 		$this->db->where('id_planilla', $id);
-		$this->db->update('public.planilla', $data);
+		$this->db->update('planilla', $data);
 	}
 
 	function delete($id)
 	{
 		$data = array('estado' => 'I');
 		$this->db->where('id_planilla', $id);
-		$this->db->update('public.planilla', $data);
+		$this->db->update('planilla', $data);
 	}
 }

@@ -12,7 +12,7 @@ class Usuario_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from public.usuario
+			from usuario
 		;
 		";
 		$query = $this->db->query($sql);
@@ -23,7 +23,7 @@ class Usuario_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from public.usuario t
+			from usuario t
 			where t.id_usuario = {$id}
 		;
 		";
@@ -35,7 +35,7 @@ class Usuario_model extends CI_Model
 	{
 		$sql = "
 		select *
-			from public.usuario u
+			from usuario u
 			where 
 				u.id_estado
 				and u.usuario = '{$usuario}'
@@ -49,20 +49,20 @@ class Usuario_model extends CI_Model
 	function insert($data)
     {
         $this->db->set($data);
-        $this->db->insert('public.usuario',$data);
+        $this->db->insert('usuario',$data);
     }
 
     function update($id, $data)
     {
         $this->db->where('id_usuario', $id);
-        $this->db->update('public.usuario', $data);        
+        $this->db->update('usuario', $data);        
     }
 
     function delete($id)
     {   
         $data=array('estado'=>'I');
 		$this->db->where('id_usuario', $id);
-        $this->db->update('public.usuario', $data); 
+        $this->db->update('usuario', $data); 
     }
 
 }
