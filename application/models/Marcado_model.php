@@ -18,6 +18,19 @@ class Marcado_model extends CI_Model
 		return $query->result();
 	}
 
+	public function getLast1000()
+	{
+		$sql = "
+		select *
+			from marcado
+		order by id_marcado desc
+		limit 1000
+		;
+		";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
 	public function get($id)
 	{
 		$sql = "

@@ -10,7 +10,7 @@ class Marcado extends CI_Controller
 
 	public function index($error = null)
 	{
-		$data['marcados'] = $this->marcado_model->getAll();
+		$data['marcados'] = $this->marcado_model->getLast1000();
 		$this->load->view('marcado/index', $data);
 	}
 
@@ -82,7 +82,7 @@ class Marcado extends CI_Controller
 						$data['ac_no']=$getData[0];
 						$data['no']=$getData[1];
 						$data['name']=$getData[2];
-						$data['time']=date('Y-m-d h:i:s',strtotime(str_replace('/', '-', $getData[3])));
+						$data['time']=date('Y-m-d H:i:s',strtotime(str_replace('/', '-', $getData[3])));
 						$data['state']=$getData[4];
 						$data['new_state']=$getData[5];
 						$data['exception']=$getData[6];
@@ -95,19 +95,6 @@ class Marcado extends CI_Controller
 						}else{
 							$erroneos++;
 						}
-						// if(!isset($result))
-						// {
-						// 	echo "<script type=\"text/javascript\">
-						// 			alert(\"Invalid File:Please Upload CSV File.\");
-						// 			window.location = \"index.php\"
-						// 		  </script>";		
-						// }
-						// else {
-						// 	  echo "<script type=\"text/javascript\">
-						// 		alert(\"CSV File has been successfully Imported.\");
-						// 		window.location = \"index.php\"
-						// 	</script>";
-						// }
 					}
 				$registros++;
 				}
@@ -116,5 +103,11 @@ class Marcado extends CI_Controller
 				echo 'erroneos'. $erroneos;
 			}
 		}
+	}
+
+	function prueba_fecha()
+	{
+		$cadena = '4/7/2022 18:19';
+		echo date('Y-m-d H:i:s',strtotime(str_replace('/', '-', $cadena)));
 	}
 }
