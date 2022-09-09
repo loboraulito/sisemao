@@ -18,6 +18,19 @@ class Planilla_model extends CI_Model
 		return $query->result();
 	}
 
+	public function getById_planilla_gestion($id_planilla_gestion)
+	{
+		$sql = "
+		select *
+			from planilla p 
+				join planilla_gestion pg on (pg.gestion = p.planilla_anio and pg.mes = p.planilla_mes_num)
+			where pg.id_planilla_gestion = {$id_planilla_gestion}
+		;
+		";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
 	public function get($id)
 	{
 		$sql = "

@@ -146,6 +146,7 @@
 															<div class="transact form-inline">
 																<div class="mr-xl-2 mr-1">
 																	<button onclick="duplicar(<?= $planillagestion->id_planilla_gestion ?>)"><i class="la la-arrow-circle-o-down"></i> duplicar</button>
+																	<a href="<?=base_url("planilla/planilla/index2/".$planillagestion->id_planilla_gestion)?>" ><i class="la la-arrow-circle-o-down"></i> duplicar</a>
 																</div>
 															</div>
 														</td>

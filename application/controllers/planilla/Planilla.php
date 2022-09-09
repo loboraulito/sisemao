@@ -15,8 +15,14 @@ class Planilla extends CI_Controller
 		$this->load->view('planilla/index', $data);
 	}
 
-	public function nuevo()
+	public function index2($id_planilla_gestion)
 	{
+		$data['planillas'] = $this->planilla_model->getById_planilla_gestion($id_planilla_gestion);
+		$this->load->view('planilla/index', $data);
+	}
+
+	public function nuevo()
+	{	
 		$data = $this->input->post();
 		$this->planilla_model->insert($data);
 	}
