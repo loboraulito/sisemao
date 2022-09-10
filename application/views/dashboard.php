@@ -117,129 +117,93 @@
 				</div>
 			</div>
 			<div class="content-body">
-			<div id="crypto-stats-3" class="row">
-			<div class="col-xl-4 col-12">
-				<div class="col-xl-12 col-12">
-					<div class="card crypto-card-3 pull-up">
-						<div class="card-content">
-							<div class="card-body pb-0">
-								<div class="row">
-									<div class="col-12 pl-2">
-										<h4>Fecha y Hora</h4>
-										<p id="fecha"></p>
-										<p id="clock"></p>
+				<div id="crypto-stats-3" class="row">
+					<div class="col-xl-4 col-12">
+						<div class="col-xl-12 col-12">
+							<div class="card crypto-card-3 pull-up">
+								<div class="card-content">
+									<div class="card-body pb-0">
+										<div class="row">
+											<div class="col-12 pl-2">
+												<h4>Fecha y Hora</h4>
+												<p id="fecha"></p>
+												<p id="clock"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-12 col-12">
+							<div class="card crypto-card-3 pull-up">
+								<div class="card-content">
+									<div class="card-body pb-0">
+										<div class="row">
+											<div class="col-12 pl-2">
+												<h4>Gestiones</h4>
+												<a href="<?=site_url("planillagestion/planillagestion");?>"><i class="la la-ellipsis-v font-medium-3"></i>ir a gestiones</a>
+												<table class="table table-xs">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Gestion</th>
+															<th>Mes</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php foreach ($planillagestiones as $i => $planillagestion) : ?>
+														<tr>
+															<th><?= $planillagestion->id_planilla_gestion ?></th>
+															<td><?= $planillagestion->gestion ?></td>
+															<td><?= $planillagestion->mes ?></td>
+														</tr>
+														<?php endforeach; ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-8 col-12">
+						<div class="col-xl-12 col-12">
+							<div class="card crypto-card-3 pull-up">
+								<div class="card-content">
+									<div class="card-body pb-0">
+										<div class="row">
+											<div class="col-12 pl-2">
+												<h4>Empleados con Fecha de fin contrato proxima</h4>
+												<a href="<?=site_url("empleado/empleado");?>"><i class="la la-ellipsis-v font-medium-3"></i>ir a empleados</a>
+												<table class="table table-xs">
+													<thead>
+														<tr>
+															<th>Nombre</th>
+															<th>Paterno</th>
+															<th>Materno</th>
+															<th>Fecha de Retiro</th>
+														</tr>
+													</thead>
+													<tbody>
+													<?php foreach ($contratosexpirar as $i => $contratoaexpirar) : ?>
+														<tr>
+															<th><?= $contratoaexpirar->nombres ?></th>
+															<td><?= $contratoaexpirar->paterno ?></td>
+															<td><?= $contratoaexpirar->materno ?></td>
+															<td><?= $contratoaexpirar->fecha_retiro ?></td>
+														</tr>
+														<?php endforeach; ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-12 col-12">
-					<div class="card crypto-card-3 pull-up">
-						<div class="card-content">
-							<div class="card-body pb-0">
-								<div class="row">
-									<div class="col-12 pl-2">
-										<h4>Gestiones</h4>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-8 col-12">
-				<div class="col-xl-12 col-12">
-					<div class="card crypto-card-3 pull-up">
-						<div class="card-content">
-							<div class="card-body pb-0">
-								<div class="row">
-									<div class="col-12 pl-2">
-										<h4>Tabla</h4>
-										<table class="table table-xs">
-                        <thead>
-                            <tr>
-                                <th>Price($)</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="success">11900.12</td>
-                                <td><i class="cc BTC-alt"></i> 0.215</td>
-                                <td>11:23:25</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11903.18</td>
-                                <td><i class="cc BTC-alt"></i> 1.545</td>
-                                <td>11:23:05</td>
-                            </tr>
-                            <tr>
-                                <td class="success">11899.56</td>
-                                <td><i class="cc BTC-alt"></i> 0.541</td>
-                                <td>11:22:50</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11910.52</td>
-                                <td><i class="cc BTC-alt"></i> 0.321</td>
-                                <td>11:22:15</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11901.15</td>
-                                <td><i class="cc BTC-alt"></i> 0.548</td>
-                                <td>11:21:25</td>
-                            </tr>
-                            <tr>
-                                <td class="success">11903.45</td>
-                                <td><i class="cc BTC-alt"></i> 0.587</td>
-                                <td>11:21:01</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11895.50</td>
-                                <td><i class="cc BTC-alt"></i> 5.125</td>
-                                <td>11:20:15</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11889.56</td>
-                                <td><i class="cc BTC-alt"></i> 0.894</td>
-                                <td>11:20:03</td>
-                            </tr>
-                            <tr>
-                                <td class="success">11885.69</td>
-                                <td><i class="cc BTC-alt"></i> 0.754</td>
-                                <td>11:19:55</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11891.12</td>
-                                <td><i class="cc BTC-alt"></i> 0.889</td>
-                                <td>11:19:15</td>
-                            </tr>
-                            <tr>
-                                <td class="danger">11889.88</td>
-                                <td><i class="cc BTC-alt"></i> 0.654</td>
-                                <td>11:18:18</td>
-                            </tr>
-                            <tr>
-                                <td class="success">11881.15</td>
-                                <td><i class="cc BTC-alt"></i> 1.254</td>
-                                <td>11:18:01</td>
-                            </tr>
-                            <tr>
-                                <td class="success">11875.75</td>
-                                <td><i class="cc BTC-alt"></i> 0.885</td>
-                                <td>11:17:25</td>
-                            </tr>
-                        </tbody>
-                    </table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
 			</div>
 		</div>
 	</div>
@@ -332,8 +296,6 @@
 <!-- END: Body-->
 
 <script>
-	
-
 	var myVar = setInterval(function() {
 		myTimer();
 	}, 1000);
@@ -345,7 +307,7 @@
 	}
 
 	$(function() {
-		
+
 	});
 </script>
 <?php

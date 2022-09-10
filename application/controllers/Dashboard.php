@@ -7,11 +7,14 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('empleado_model');
+		$this->load->model('planillagestion_model');
 	}
 
 	public function index($error=null)
 	{
 		$data=[];
+		$data["contratosexpirar"]=$this->empleado_model->getProximosContratosFenecer();
+		$data['planillagestiones'] = $this->planillagestion_model->getAll();
 		$this->load->view('dashboard',$data);
 	}
 

@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 		$clave = $this->input->post('clave');
 		$usu=$this->usuario_model->verificar($usuario,$clave);
 		if(!empty($usu)){
-			redirect(site_url("planilla/planilla/index"));
+			redirect(site_url("dashboard"));
 		}
 		else{
 			redirect(site_url("login/index/".'error'));
