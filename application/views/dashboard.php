@@ -84,7 +84,7 @@
 	<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
 		<div class="main-menu-content">
 			<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-			<li class=" nav-item"><a href="index.html"><i class="la la-home"></i><span class="menu-title" data-i18n="Crypto Dashboard">Menú de Opciones</span></a>
+				<li class=" nav-item"><a href="index.html"><i class="la la-home"></i><span class="menu-title" data-i18n="Crypto Dashboard">Menú de Opciones</span></a>
 				</li>
 				<li class=" navigation-header"><span data-i18n="Crypto">Planillas Gestión</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Crypto"></i>
 				</li>
@@ -109,7 +109,7 @@
 		<div class="content-wrapper">
 			<div class="content-header row">
 				<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-					<h3 class="content-header-title mb-0 d-inline-block">Planillas Gestión</h3>
+					<h3 class="content-header-title mb-0 d-inline-block">Dashboard</h3>
 				</div>
 				<div class="content-header-right col-md-6 col-12">
 					<div class="btn-group float-md-right">
@@ -117,51 +117,93 @@
 				</div>
 			</div>
 			<div class="content-body">
-				<!-- Basic Tables start -->
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title">Planillas Gestión</h4>
+				<div id="crypto-stats-3" class="row">
+					<div class="col-xl-4 col-12">
+						<div class="col-xl-12 col-12">
+							<div class="card crypto-card-3 pull-up">
+								<div class="card-content">
+									<div class="card-body pb-0">
+										<div class="row">
+											<div class="col-12 pl-2">
+												<h4>Fecha y Hora</h4>
+												<p id="fecha"></p>
+												<p id="clock"></p>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="card-content collapse show">
-								<div class="card-body">
-									<div class="table-responsive">
-										<table class="table tabla-planillagestiones">
-											<thead>
-												<tr>
-													<th>#</th>
-													<th>Gestión</th>
-													<th>Mes</th>
-													<th>Opciones</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($planillagestiones as $i => $planillagestion) : ?>
-													<tr>
-														<th><?= $planillagestion->id_planilla_gestion ?></th>
-														<td><?= $planillagestion->gestion ?></td>
-														<td><?= $planillagestion->mes ?></td>
-														<td>
-															<div class="transact form-inline">
-																<div class="mr-xl-2 mr-1">
-																	<button onclick="duplicar(<?= $planillagestion->id_planilla_gestion ?>)"><i class="la la-arrow-circle-o-down"></i> duplicar</button>
-																	<a href="<?=site_url("planilla/planilla/index2/".$planillagestion->id_planilla_gestion)?>" ><i class="la la-arrow-circle-o-down"></i> ir a planilla</a>
-																	<a target="_blank" href="<?=site_url("planilla/planilla/imprimirPlanillaGestion/".$planillagestion->id_planilla_gestion)?>" ><i class="la la-arrow-circle-o-down"></i> Imprimir Planilla</a>
-																</div>
-															</div>
-														</td>
-													</tr>
-												<?php endforeach; ?>
-											</tbody>
-										</table>
+						</div>
+						<div class="col-xl-12 col-12">
+							<div class="card crypto-card-3 pull-up">
+								<div class="card-content">
+									<div class="card-body pb-0">
+										<div class="row">
+											<div class="col-12 pl-2">
+												<h4>Gestiones</h4>
+												<a href="<?=site_url("planillagestion/planillagestion");?>"><i class="la la-ellipsis-v font-medium-3"></i>ir a gestiones</a>
+												<table class="table table-xs">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Gestion</th>
+															<th>Mes</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php foreach ($planillagestiones as $i => $planillagestion) : ?>
+														<tr>
+															<th><?= $planillagestion->id_planilla_gestion ?></th>
+															<td><?= $planillagestion->gestion ?></td>
+															<td><?= $planillagestion->mes ?></td>
+														</tr>
+														<?php endforeach; ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-8 col-12">
+						<div class="col-xl-12 col-12">
+							<div class="card crypto-card-3 pull-up">
+								<div class="card-content">
+									<div class="card-body pb-0">
+										<div class="row">
+											<div class="col-12 pl-2">
+												<h4>Empleados con Fecha de fin contrato proxima</h4>
+												<a href="<?=site_url("empleado/empleado");?>"><i class="la la-ellipsis-v font-medium-3"></i>ir a empleados</a>
+												<table class="table table-xs">
+													<thead>
+														<tr>
+															<th>Nombre</th>
+															<th>Paterno</th>
+															<th>Materno</th>
+															<th>Fecha de Retiro</th>
+														</tr>
+													</thead>
+													<tbody>
+													<?php foreach ($contratosexpirar as $i => $contratoaexpirar) : ?>
+														<tr>
+															<th><?= $contratoaexpirar->nombres ?></th>
+															<td><?= $contratoaexpirar->paterno ?></td>
+															<td><?= $contratoaexpirar->materno ?></td>
+															<td><?= $contratoaexpirar->fecha_retiro ?></td>
+														</tr>
+														<?php endforeach; ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- Responsive tables end -->
 			</div>
 		</div>
 	</div>
@@ -183,13 +225,13 @@
 							<label for="gestion">Gestión</label>
 							<select id="gestion" name="gestion">
 								<option value="<?php echo date("Y"); ?>" selected><?php echo date("Y"); ?></option>
-								<option value="<?php echo date("Y")+1; ?>"><?php echo date("Y")+1; ?></option>
+								<option value="<?php echo date("Y") + 1; ?>"><?php echo date("Y") + 1; ?></option>
 							</select>
 						</fieldset>
 						<fieldset class="form-group floating-label-form-group">
 							<label for="mes">Mes</label>
 							<select id="mes" name="mes">
-							<option value="1">1</option>
+								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
@@ -254,78 +296,19 @@
 <!-- END: Body-->
 
 <script>
-	var js_data = '<?php echo json_encode($planillagestiones); ?>';
-	var js_obj_data = JSON.parse(js_data);
-	var tabla;
-	var a;
+	var myVar = setInterval(function() {
+		myTimer();
+	}, 1000);
+
+	function myTimer() {
+		var d = new Date();
+		document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+		document.getElementById("fecha").innerHTML = d.toISOString().slice(0, 10);
+	}
 
 	$(function() {
-		$('#nuevo').on('shown.bs.modal', function(e) {
-			$('#form').validator()
-		});
 
-		jQuery.fn.resetear = function() {
-			$(this).each(function() {
-				this.reset();
-			});
-		}
 	});
-
-	function modalDuplicar(id) {
-		editar(id);
-	}
-
-	function guardar_nuevo() {
-		if (!$('#form').find('.has-error').length) {
-			$.ajax({
-				type: "POST",
-				url: '<?php echo site_url('planillagestion/planillagestion/nuevo'); ?>',
-				data: $('#form').serialize(),
-				success: function(response) {
-					$('#nuevo').modal('hide');
-					location.reload();
-				},
-				error: function() {
-					alert('Formulario con errores al crear nuevo empleado');
-				}
-			});
-		}
-	}
-
-	function duplicar(id) {
-		$('#form-planillagestion').resetear();
-
-		$('#planillagestion-modal').modal('show');
-		$("#guardar-btn-editar").unbind("click");
-		$("#guardar-btn-editar").bind("click", function() {
-			guardar_editar(id);
-		});
-	}
-
-	function guardar_editar(id) {
-		if (!$('#form-planillagestion').find('.has-error').length) {
-			$.ajax({
-				type: "POST",
-				url: '<?php echo site_url('planillagestion/planillagestion/duplicar/'); ?>' + id,
-				data: $('#form-planillagestion').serialize(),
-				success: function(response) {
-					$('#planillagestion-modal').modal('hide');
-					location.reload();
-				},
-				error: function() {
-					alert('Formulario con errores al editar');
-				}
-			});
-		}
-	}
-
-	function buscar(id) {
-		return js_obj_data.filter(
-			function(data) {
-				return data.id_planillagestion == id
-			}
-		);
-	}
 </script>
 <?php
 function buscar($lista, $campo, $valor, $campo_a_retornar)

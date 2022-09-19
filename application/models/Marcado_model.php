@@ -70,5 +70,22 @@ class Marcado_model extends CI_Model
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
+
+	function dias_trabajados($id_planilla){
+		$sql = "
+		select count(*)/2 as dias_trabajados
+			from marcado m 
+				join planilla p on (p.planilla_mes_num = MONTH(m.`time`) and p.planilla_anio =YEAR(m.`time`))
+				join grupo_marcado gm on (gm.id_grupo_marcado = p.id_grupo_marcado)
+				join grupo_marcado_horarios gmh on (gm.id_grupo_marcado = gmh.id_grupo_marcado  and gmh.dia = DAYOFWEEK(m.`time`))  
+			where m.ac_no = p.dip 
+				and m.`exception` = 'OK'
+				and m.state = 'C/In'
+				and p.id_planilla = {$id_planilla}
+		;
+		";
+		$query = $this->db->query($sql);
+		return $query->row();
+	}
 }
 ?>

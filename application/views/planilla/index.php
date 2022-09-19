@@ -167,6 +167,9 @@
 																<div class="mr-xl-2 mr-1">
 																	<button onclick="modalEditarDatosDescuento(<?= $planilla->id_planilla ?>)"><i class="la la-arrow-circle-o-down"></i> Datos Descuento</button>
 																</div>
+																<div class="mr-xl-2 mr-1">
+																	<button onclick="diastrabajados(<?= $planilla->id_planilla ?>)"><i class="la la-arrow-circle-o-down"></i> dias trabajados</button>
+																</div>
 															</div>
 														</td>
 													</tr>
@@ -969,6 +972,34 @@
 	</div>
 	<!-- END: Modal -->
 
+	<!-- Modal -->
+	<div class="modal fade text-left" id="dias-trabajados" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="myModalLabel35">Dias Trabajados</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="form-planilla-datos-descuentos">
+					<div class="modal-body">
+						<fieldset class="form-group floating-label-form-group">
+							<label for="dias_traba">Días trabajados</label>
+							<input type="text" class="form-control" id="dias_traba" name="dias_traba" placeholder="dias_traba">
+						</fieldset>
+					</div>
+					<div class="modal-footer">
+						<input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="close">
+						<!-- <input type="submit" class="btn btn-outline-primary btn-lg" value="Login"> -->
+						<!-- <button id="guardar-btn-editar4" type="button" class="btn btn-primary">Guardar</button> -->
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- END: Modal -->
+
 	<div class="sidenav-overlay"></div>
 	<div class="drag-target"></div>
 
@@ -1139,6 +1170,22 @@
 		$("#guardar-btn").bind("click", function() {
 			guardar_nuevo();
 		});
+	}
+	// dias-trabajados
+	function diastrabajados(id) {
+		$.ajax({
+				type: "POST",
+				url: '<?php echo site_url('planilla/planilla/dias_trabajados/'); ?>'+id,
+				data: $('#form').serialize(),
+				success: function(response) {
+					$('#dias_traba').val(response.dias_trabajados);
+					$('#dias-trabajados').appendTo("body").modal('show');
+					console.log(response);
+				},
+				error: function() {
+					alert('Formulario con errores al crear nuevo empleado');
+				}
+			});		
 	}
 
 	function buscar(id) {

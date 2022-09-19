@@ -41,5 +41,20 @@ class Empleado_model extends CI_Model
 		$this->db->where('id_empleado', $id);
 		$this->db->update('empleado', $data);
 	}
+	public function getProximosContratosFenecer()
+	{
+		$sql = "
+		select p.nombres, p.paterno, p.materno  , p.fecha_retiro 
+			from planilla p
+				join planilla_gestion pg on (p.planilla_anio =pg.gestion and p.planilla_mes_num = pg.mes)
+			where p.fecha_retiro
+			group by p.nombres, p.paterno, p.materno  , p.fecha_retiro
+			order by pg.gestion, pg.mes, p.fecha_retiro
+			limit 50
+		;
+		";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
 }
 ?>
