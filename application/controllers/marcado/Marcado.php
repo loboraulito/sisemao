@@ -1,5 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+require FCPATH.'vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Marcado extends CI_Controller
 {
 	public function __construct()
@@ -109,5 +114,18 @@ class Marcado extends CI_Controller
 	{
 		$cadena = '4/7/2022 18:19';
 		echo date('Y-m-d H:i:s',strtotime(str_replace('/', '-', $cadena)));
+	}
+
+	function prueba_excel(){
+		$excel = new Spreadsheet();
+		$hoja = $excel->getActiveSheet();
+		$hoja->setCellValue('A1','Hello World!');
+		$writer = new Xlsx($excel);
+		$filename = 'Report';
+		//ob_end_clean();
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'.$filename.'.xlsx"');
+		header('Cache-Control: max-age=0');
+		$writer->save('php://output');
 	}
 }
