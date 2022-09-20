@@ -34,6 +34,11 @@ class Planilla extends CI_Controller
     	echo json_encode( $dias );
 	}
 
+	public function control_asistencia($id_planilla_gestion){
+		$data['planillas'] = $this->planilla_model->getById_planilla_gestion($id_planilla_gestion);
+		$this->load->view('planilla/contro_asistencia', $data);
+	}
+
 	public function actualizarVariables($id_planilla)
 	{
 		$planilla = $this->planilla_model->get($id_planilla);
