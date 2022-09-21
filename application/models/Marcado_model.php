@@ -87,5 +87,25 @@ class Marcado_model extends CI_Model
 		$query = $this->db->query($sql);
 		return $query->row();
 	}
+
+	function asistencias($id)
+	{
+		$sql = "
+		select v.gen_date, m.`time`  
+			from
+				(select adddate('2020-01-01', t3*1000 + t2*100 + t1*10 + t0) gen_date from
+				(select 0 t0 union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9) t0,
+				(select 0 t1 union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9) t1,
+				(select 0 t2 union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9) t2,
+				(select 0 t3 union select 1 union select 2 union select 3 union select 4 union select 5 union select 6 union select 7 union select 8 union select 9) t3) v
+			left join planilla p on (p.id_planilla ={$id})
+			left join marcado m on (gen_date = date(m.`time`) and m.ac_no  = p.dip)     
+			Where year(gen_date) = p.planilla_anio and month(gen_date) = p.planilla_mes_num
+			order by gen_date, m.time
+		;  
+		";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
 }
 ?>

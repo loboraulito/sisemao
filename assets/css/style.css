@@ -16,3 +16,11 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 #clock {
     font-size: 20px;
 }
+
+.list-button{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.sin_espacios{
+	width: 100% !important;
+}

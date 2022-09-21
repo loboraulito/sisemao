@@ -127,7 +127,7 @@
 							<div class="card-content collapse show">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table tabla-planillas">
+										<table class="table tabla-planillas wallet-wrapper">
 											<thead>
 												<tr>
 													<th>#</th>

@@ -119,6 +119,24 @@ class Planilla extends CI_Controller
 		} else $this->output->set_status_header('404');
 	}
 
+	public function getasistencia($id)
+	{	
+		$marcadosmes = $this->marcado_model->asistencias($id);
+		return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(200)
+            ->set_output(json_encode($marcadosmes));
+	}
+
+	public function getplanilla($id)
+	{	
+		$datos = $this->planilla_model->get($id);
+		return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(200)
+            ->set_output(json_encode($datos));
+	}
+
 	public function imprimir($id_planilla)
 	{
 		$planilla = $this->planilla_model->get($id_planilla);

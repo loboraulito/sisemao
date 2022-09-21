@@ -31,6 +31,8 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>app-assets/css/core/colors/palette-gradient.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>app-assets/css/core/colors/palette-callout.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>app-assets/css/pages/single-page.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>app-assets/css/pages/app-email.css">
+    <!-- END: Page CSS-->
 	<!-- END: Page CSS-->
 
 	<!-- BEGIN: Custom CSS-->
@@ -42,7 +44,7 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+<body class="vertical-layout vertical-menu-modern 2-columns email-application  fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
 	<!-- BEGIN: Header-->
 	<nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
@@ -108,46 +110,65 @@
 		<div class="content-overlay"></div>
 		<div class="content-wrapper">
 			<div class="content-header row">
-				<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-					<h3 class="content-header-title mb-0 d-inline-block">Planillas</h3>
-				</div>
+				<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new"></div>
 				<div class="content-header-right col-md-6 col-12">
 					<div class="btn-group float-md-right">
 					</div>
 				</div>
 			</div>
 			<div class="content-body">
-				<!-- Basic Tables start -->
 				<div class="row">
-					<div class="col-4">
+					<div class="col-4 content-right">
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">Planillas</h4>
 							</div>
 							<div class="card-content collapse show">
 								<div class="card-body">
-									<div class="table-responsive">
-										<table class="table tabla-planillas">
-											<thead>
-												<tr>
-													<th>#</th>
-													<th>Nombres</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($planillas as $i => $planilla) : ?>
-													<tr>
-														<th><?= $planilla->id_planilla ?></th>
-														<td>
-															<button onclick="editar_marcados(<?= $planilla->id_planilla ?>)" type="button" class="btn btn-success mr-1 mb-1">
-															<?= $planilla->paterno . ' ' . $planilla->materno . ' ' . $planilla->nombres ?>
-															<br><?= $planilla->dip ?>
+									<!-- email app overlay -->
+									<div class="app-content-overlay"></div>
+									<div class="email-app-area">
+										<!-- Email list Area -->
+										<div class="email-app-list-wrapper">
+											<div class="email-app-list">                                
+												<!-- email user list start -->
+												<div class="email-user-list list-group">
+													<ul class="users-list-wrapper media-list">
+													<?php foreach ($planillas as $i => $planilla) : ?>
+														<li class="media mail-read list-button"> 
+															<button class="sin_espacios" href="#" target="_blank" rel="noopener noreferrer" onclick="editar_marcados(<?= $planilla->id_planilla?>)">
+															<div class="media-body">
+																<div class="user-details">
+																	<div class="mail-items">
+																		<span class="list-group-item-text text-truncate"><?= $planilla->paterno . ' ' . $planilla->materno . ' ' . $planilla->nombres ?></span>
+																	</div>
+																</div>
+																<div class="mail-message">
+																	<p class="list-group-item-text truncate mb-0">
+																	<?= $planilla->dip ?>
+																	</p>
+																	<div class="mail-meta-item">
+																		<span class="float-right">
+																			<span class="bullet bullet-success bullet-sm"></span>
+																		</span>
+																	</div>
+																</div>
+															</div>
 															</button>
-														</td>														
-													</tr>
-												<?php endforeach; ?>
-											</tbody>
-										</table>
+														</li>
+														<?php endforeach; ?>
+													</ul>
+													<!-- email user list end -->
+
+													<!-- no result when nothing to show on list -->
+													<div class="no-results">
+														<i class="ft-info font-large-2"></i>
+														<h5>No Items Found</h5>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--/ Email list Area -->
 									</div>
 								</div>
 							</div>
@@ -156,39 +177,21 @@
 					<div class="col-8">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">Planillas</h4>
+								<h4 class="card-title">Asistencias</h4>
 							</div>
 							<div class="card-content collapse show">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table tabla-planillas">
-											<thead>
-												<tr>
-													<th>#</th>
-													<th>Nombres</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php foreach ($planillas as $i => $planilla) : ?>
-													<tr>
-														<th><?= $planilla->id_planilla ?></th>
-														<td>
-															<button onclick="editar_marcados(<?= $planilla->id_planilla ?>)" type="button" class="btn btn-success mr-1 mb-1">
-															<?= $planilla->paterno . ' ' . $planilla->materno . ' ' . $planilla->nombres ?>
-															<br><?= $planilla->dip ?>
-															</button>
-														</td>														
-													</tr>
-												<?php endforeach; ?>
-											</tbody>
-										</table>
+										<div class="row">
+											<div class="col-8">tabla</div>
+											<div class="col-4">formulario</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Responsive tables end -->
+                </div>				
 			</div>
 		</div>
 	</div>
@@ -575,7 +578,30 @@
 	}
 
 	function editar_marcados(id){
-		console.log(id);
+		$.ajax({
+				type: "POST",
+				url: '<?php echo site_url('planilla/planilla/getasistencia/'); ?>' + id,
+				success: function(response) {
+					console.log(response);
+				},
+				error: function() {
+					alert('Formulario con errores');
+				}
+			});
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url('planilla/planilla/getplanilla/'); ?>' + id,
+				success: function(response) {
+					console.log(response);
+				},
+				error: function() {
+					alert('Formulario con errores');
+				}
+			});
+	}
+
+	function llenarAsistencias(asistencias){
+		
 	}
 </script>
 <?php
