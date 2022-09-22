@@ -183,8 +183,8 @@
 								<div class="card-body">
 									<div class="table-responsive">
 										<div class="row">
-											<div class="col-8">tabla</div>
-											<div class="col-4">formulario</div>
+											<div class="col-8 tabla-asistencia">tabla</div>
+											<div class="col-4 formulario-asistencia">formulario</div>
 										</div>
 									</div>
 								</div>
@@ -580,9 +580,10 @@
 	function editar_marcados(id){
 		$.ajax({
 				type: "POST",
-				url: '<?php echo site_url('planilla/planilla/getasistencia/'); ?>' + id,
+				url: '<?php echo site_url('planilla/planilla/getasistenciavista/'); ?>' + id,
 				success: function(response) {
 					console.log(response);
+					$('.tabla-asistencia').html(response);
 				},
 				error: function() {
 					alert('Formulario con errores');
@@ -590,9 +591,10 @@
 			});
 			$.ajax({
 				type: "POST",
-				url: '<?php echo site_url('planilla/planilla/getplanilla/'); ?>' + id,
+				url: '<?php echo site_url('planilla/planilla/getplanillavista/'); ?>' + id,
 				success: function(response) {
 					console.log(response);
+					$('.formulario-asistencia').html(response);
 				},
 				error: function() {
 					alert('Formulario con errores');

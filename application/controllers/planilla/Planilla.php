@@ -137,6 +137,18 @@ class Planilla extends CI_Controller
             ->set_output(json_encode($datos));
 	}
 
+	public function getasistenciavista($id)
+	{	
+		$data['marcadosmes'] = $this->marcado_model->asistencias($id);
+		return $this->load->view('planilla/vistaasistencia', $data);
+	}
+
+	public function getplanillavista($id)
+	{	
+		$data['datos'] = $this->planilla_model->get($id);
+		return $this->load->view('planilla/vistaplanilla', $data);
+	}
+
 	public function imprimir($id_planilla)
 	{
 		$planilla = $this->planilla_model->get($id_planilla);
