@@ -582,7 +582,6 @@
 				type: "POST",
 				url: '<?php echo site_url('planilla/planilla/getasistenciavista/'); ?>' + id,
 				success: function(response) {
-					console.log(response);
 					$('.tabla-asistencia').html(response);
 				},
 				error: function() {
@@ -593,7 +592,6 @@
 				type: "POST",
 				url: '<?php echo site_url('planilla/planilla/getplanillavista/'); ?>' + id,
 				success: function(response) {
-					console.log(response);
 					$('.formulario-asistencia').html(response);
 				},
 				error: function() {
@@ -602,8 +600,9 @@
 			});
 	}
 
-	function llenarAsistencias(asistencias){
-		
+	function guardarDiasplanilla(){
+		var formData = $("#form-diasplanilla").serializeArray();
+		console.log(formData);
 	}
 </script>
 <?php

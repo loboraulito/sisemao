@@ -569,7 +569,7 @@
       debug: false,
       fallbackLng: "en",
       backend: {
-        loadPath: "../../../app-assets/data/locales/{{lng}}.json",
+        loadPath: "http://172.21.0.2/app-assets/data/locales/{{lng}}.json",
       },
       returnObjects: true
     },
